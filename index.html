@@ -1,0 +1,207 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        body {
+            padding: 5% 5%;
+            display: flex;
+        }
+
+        body * {
+            box-sizing: border-box;
+        }
+
+        .row {
+            display: flex;
+            flex-direction: column;
+            margin-bottom: 12px;
+        }
+
+        .input {
+            width: 200px;
+            padding: 6px;
+            margin-top: 6px;
+        }
+
+        label {
+            min-width: 60px;
+            display: block;
+        }
+
+        form:nth-child(2) {
+            margin-left: 64px;
+        }
+    </style>
+  </head>
+  <body>
+    <form>
+      <div class="row">
+        <label>
+          Margines
+        </label>
+        <input class="input" type="number" id="value" value="0"/>
+      </div>
+      <div class="row">
+        <label>
+          1601px
+        </label>
+        <input class="input" disabled type="number" id="laptop_big"/>
+      </div>
+      <div class="row">
+        <label>
+          1480px
+        </label>
+        <input class="input" disabled type="number" id="laptop"/>
+      </div>
+      <div class="row">
+        <label>
+          1280px
+        </label>
+        <input class="input" disabled type="number" id="laptop_small"/>
+      </div>
+      <div class="row">
+        <label>
+          1100px
+        </label>
+        <input class="input" disabled type="number" id="tablet_big"/>
+      </div>
+      <div class="row">
+        <label>
+          867px
+        </label>
+        <input class="input" disabled type="number" id="tablet"/>
+      </div>
+      <div class="row">
+        <label>
+          769px
+        </label>
+        <input class="input" disabled type="number" id="tablet_small"/>
+      </div>
+      <div class="row">
+        <label>
+          601px
+        </label>
+        <input class="input" disabled type="number" id="phone_big"/>
+      </div>
+      <div class="row">
+        <label>
+          431px
+        </label>
+        <input class="input" disabled type="number" id="phone"/>
+      </div>
+    </form>
+    <form>
+
+      <div class="row">
+        Liczba kart
+        <input class="input" type="number" id="margin_count"/>
+      </div>
+      <div class="row">
+        <label>
+          1920px
+        </label>
+        <input class="input" disabled type="number" id="margin_value" value="0"/>
+      </div>
+      <div class="row">
+        <label>
+          1601px
+        </label>
+        <input class="input" disabled type="number" id="margin_laptop_big"/>
+      </div>
+      <div class="row">
+        <label>
+          1480px
+        </label>
+        <input class="input" disabled type="number" id="margin_laptop"/>
+      </div>
+      <div class="row">
+        <label>
+          1280px
+        </label>
+        <input class="input" disabled type="number" id="margin_laptop_small"/>
+      </div>
+      <div class="row">
+        <label>
+          1100px
+        </label>
+        <input class="input" disabled type="number" id="margin_tablet_big"/>
+      </div>
+      <div class="row">
+        <label>
+          867px
+        </label>
+        <input class="input" disabled type="number" id="margin_tablet"/>
+      </div>
+      <div class="row">
+        <label>
+          769px
+        </label>
+        <input class="input" disabled type="number" id="margin_tablet_small"/>
+      </div>
+      <div class="row">
+        <label>
+          601px
+        </label>
+        <input class="input" disabled type="number" id="margin_phone_big"/>
+      </div>
+      <div class="row">
+        <label>
+          431px
+        </label>
+        <input class="input" disabled type="number" id="margin_phone"/>
+      </div>
+    </form>
+  </body>
+  <script>
+    const value = document.querySelector('#value');
+    const laptop_big = document.querySelector('#laptop_big');
+    const laptop = document.querySelector('#laptop');
+    const laptop_small = document.querySelector('#laptop_small');
+    const tablet_big = document.querySelector('#tablet_big');
+    const tablet = document.querySelector('#tablet');
+    const tablet_small = document.querySelector('#tablet_small');
+    const phone_big = document.querySelector('#phone_big');
+    const phone = document.querySelector('#phone');
+
+    value.addEventListener('change', () => {
+      const proportion = 1920 / value.value;
+
+      laptop_big.value = (1601 / proportion).toFixed(2);
+      laptop.value = (1480 / proportion).toFixed(2);
+      laptop_small.value = (1281 / proportion).toFixed(2);
+      tablet_big.value = (1100 / proportion).toFixed(2);
+      tablet.value = (867 / proportion).toFixed(2);
+      tablet_small.value = (769 / proportion).toFixed(2);
+      phone_big.value = (601 / proportion).toFixed(2);
+      phone.value = (431 / proportion).toFixed(2);
+    })
+
+    const margin_count = document.querySelector('#margin_count');
+    const margin_value = document.querySelector('#margin_value');
+    const margin_laptop_big = document.querySelector('#margin_laptop_big');
+    const margin_laptop = document.querySelector('#margin_laptop');
+    const margin_laptop_small = document.querySelector('#margin_laptop_small');
+    const margin_tablet_big = document.querySelector('#margin_tablet_big');
+    const margin_tablet = document.querySelector('#margin_tablet');
+    const margin_tablet_small = document.querySelector('#margin_tablet_small');
+    const margin_phone_big = document.querySelector('#margin_phone_big');
+    const margin_phone = document.querySelector('#margin_phone');
+
+    margin_count.addEventListener('change', () => {
+      margin_value.value = ((value.value * (margin_count.value - 1)) / margin_count.value).toFixed(2);
+      margin_laptop_big.value = ((laptop_big.value * (margin_count.value - 1)) / margin_count.value).toFixed(2);
+      margin_laptop.value = ((laptop.value * (margin_count.value - 1)) / margin_count.value).toFixed(2);
+      margin_laptop_small.value = ((laptop_small.value * (margin_count.value - 1)) / margin_count.value).toFixed(2);
+      margin_tablet_big.value = ((tablet_big.value * (margin_count.value - 1)) / margin_count.value).toFixed(2);
+      margin_tablet.value = ((tablet.value * (margin_count.value - 1)) / margin_count.value).toFixed(2);
+      margin_tablet_small.value = ((tablet_small.value * (margin_count.value - 1)) / margin_count.value).toFixed(2);
+      margin_phone_big.value = ((phone_big.value * (margin_count.value - 1)) / margin_count.value).toFixed(2);
+      margin_phone.value = ((phone.value * (margin_count.value - 1)) / margin_count.value).toFixed(2);
+    })
+
+  </script>
+</html>
